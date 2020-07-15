@@ -2,23 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   HomeScreen({Key key, this.title}) : super(key: key);
 
   final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<HomeScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +28,7 @@ class _MyHomePageState extends State<HomeScreen> {
           ),
         ),
         title: Text(
-          widget.title,
+          title,
           style: TextStyle(color: Colors.black),
         ),
       ),
@@ -60,7 +47,7 @@ class _MyHomePageState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         clipBehavior: Clip.hardEdge,
         backgroundColor: Colors.blue.withOpacity(.3),
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child: ClipRect(
           child: BackdropFilter(
