@@ -10,64 +10,50 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Blur Widget Demo',
+      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Blur Widget Demo'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(widget.title),
         backgroundColor: Colors.transparent,
         elevation: 0,
+        brightness: Brightness.light,
         flexibleSpace: ClipRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
             child: Container(
-              height: 100,
               color: Colors.transparent,
             ),
           ),
+        ),
+        title: Text(
+          title,
+          style: TextStyle(color: Colors.black),
         ),
       ),
       body: ListView.builder(
         itemBuilder: (context, i) {
           return Container(
-            margin: const EdgeInsets.all(16),
             height: 50,
             color: Colors.red,
+            margin: const EdgeInsets.all(16),
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        clipBehavior: Clip.hardEdge,
-        backgroundColor: Colors.blue.withOpacity(.6),
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: ClipRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 7, sigmaY: 7),
-            child: Center(child: Icon(Icons.add)),
-          ),
-        ),
       ),
     );
   }
